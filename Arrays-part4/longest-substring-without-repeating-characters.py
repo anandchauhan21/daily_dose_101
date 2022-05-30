@@ -40,4 +40,6 @@ class Solution:
         return res
 x = Solution()
 print(x.lengthOfLongestSubstring("pwwkew"))
+
 ###out-put: 3
+###Substring: "wke"
