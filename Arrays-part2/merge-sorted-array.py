@@ -26,7 +26,7 @@ nums2.length == n
 1 <= m + n <= 200
 -109 <= nums1[i], nums2[j] <= 109
 
-qustion link https://leetcode.com/problems/merge-sorted-array/
+Question link https://leetcode.com/problems/merge-sorted-array/
 """
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
