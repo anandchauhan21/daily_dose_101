@@ -34,7 +34,7 @@ Constraints:
 0 <= value <= 105
 At most 2 * 105 calls will be made to get and put.
 
-Qustion link https://leetcode.com/problems/lru-cache/
+Question link https://leetcode.com/problems/lru-cache/
 """
 class Node:
     def __init__(self, key, val):
