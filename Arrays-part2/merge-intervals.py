@@ -17,7 +17,7 @@ Constraints:
 intervals[i].length == 2
 0 <= starti <= endi <= 104
 
-qustion link https://leetcode.com/problems/merge-intervals/
+Question link https://leetcode.com/problems/merge-intervals/
 """
 class Solution:
     def merge(self, intervals:list[list[int]]) -> list[list[int]]:
