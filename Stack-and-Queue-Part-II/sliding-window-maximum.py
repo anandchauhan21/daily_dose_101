@@ -27,7 +27,7 @@ Constraints:
 -104 <= nums[i] <= 104
 1 <= k <= nums.length
 
-qustion link https://leetcode.com/problems/sliding-window-maximum/
+question link https://leetcode.com/problems/sliding-window-maximum/
 """
 import collections
 from typing import List
