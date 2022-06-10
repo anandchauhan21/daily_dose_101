@@ -21,7 +21,7 @@ Accepted
 Submissions
 1,266,525
 
-qustion link https://leetcode.com/problems/largest-rectangle-in-histogram/
+question link https://leetcode.com/problems/largest-rectangle-in-histogram/
 """
 
 from typing import List
