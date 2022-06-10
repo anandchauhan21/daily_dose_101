@@ -16,7 +16,7 @@ n == matrix.length == matrix[i].length
 1 <= n <= 20
 -1000 <= matrix[i][j] <= 1000
 
-qustion link https://leetcode.com/problems/rotate-image/
+Question link https://leetcode.com/problems/rotate-image/
 """
 class Solution:
     def rotate(self, matrix: list[list[int]]) -> None:
