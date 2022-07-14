@@ -42,3 +42,37 @@ class Solution:
         root.left = self.buildTree(preorder[1:mid +1], inorder[:mid])
         root.right =self.buildTree(preorder[mid+1:], inorder[mid + 1:])
         return root
+
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if preorder == [] or inorder == []:
+            return None
+        else:
+            hashmap = {}
+            for i in range(len(inorder)):
+                hashmap[inorder[i]] = i
+
+            return self.build(hashmap, preorder, 0, inorder, 0, len(inorder) - 1)
+
+    def build(self, hashmap, preorder, begin, inorder, start, end):
+        if start > end:
+            return
+
+        if begin == len(preorder):
+            return
+
+        rootVal = preorder[begin]
+        root = TreeNode(val=rootVal)
+
+        loc = hashmap[rootVal]
+
+        rightbegin = begin + loc - start + 1
+
+        left = self.build(hashmap, preorder, begin + 1, inorder, start, loc - 1)
+        right = self.build(hashmap, preorder, rightbegin, inorder, loc + 1, end)
+
+        root.left = left
+        root.right = right
+
+        return root
