@@ -17,7 +17,7 @@ nums.length == n + 1
 1 <= nums[i] <= n
 All the integers in nums appear only once except for precisely one integer which appears two or more times.
 
-question link https://leetcode.com/problems/find-the-duplicate-number/
+Question link https://leetcode.com/problems/find-the-duplicate-number/
 """
 
 class Solution:
