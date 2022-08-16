@@ -21,13 +21,16 @@ s consists of only lowercase English letters.
 Question link https://leetcode.com/problems/first-unique-character-in-a-string/
 """
 from collections import Counter
+
+
 class Solution:
-    def firstUniqChar(self,s: str) -> int:
+    def firstUniqChar(self, s: str) -> int:
         counter = Counter(list(s))
         for i in range(len(s)):
             if counter.get(s[i]) == 1:
                 return i
         return -1
+
 
 x = Solution()
 print(x.firstUniqChar("leetcode"))
@@ -37,8 +40,25 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         d = {}
         for i in range(len(s)):
-            d[s[i]] = d.get(s[i],0) + 1
+            d[s[i]] = d.get(s[i], 0) + 1
         for i in d:
             if d[i] == 1:
                 return s.find(i)
         return -1
+
+
+def firstUniqChar(self, s: str) -> int:
+    hash_table = [-1] * 26
+    for i, c in enumerate(s):
+        if hash_table[ord(c) - ord('a')] == -1:
+            hash_table[ord(c) - ord('a')] = i
+        else:
+            hash_table[ord(c) - ord('a')] = -2
+    ans = float("inf")
+    for idx in hash_table:
+        if idx >= 0:
+            ans = min(ans, idx)
+    if ans == float("inf"):
+        return -1
+    else:
+        return ans
