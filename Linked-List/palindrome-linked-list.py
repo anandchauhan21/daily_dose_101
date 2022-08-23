@@ -52,5 +52,17 @@ class Solution:
             left = left.next
             right = right.next
         return True
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        temp = []
+
+        cur = head
+        while cur:
+            temp.append(cur.val)
+            cur = cur.next
+
+        if temp == temp[::-1]:
+            return True
+        return False
 
 
