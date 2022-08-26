@@ -35,6 +35,6 @@ class Solution:
             if slow == slow2:
                 return slow
 x = Solution()
-print(x.findDuplicate([1,3,4,2,2]))
+
 
 
