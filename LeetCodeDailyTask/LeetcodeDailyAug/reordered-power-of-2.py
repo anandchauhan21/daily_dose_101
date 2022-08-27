@@ -33,3 +33,5 @@ class Solution:
             if curr == nums:
                 return True
         return False
+x = Solution()
+print(x.reorderedPowerOf2(10))
