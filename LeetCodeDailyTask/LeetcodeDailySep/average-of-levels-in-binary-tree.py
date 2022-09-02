@@ -24,18 +24,23 @@ The number of nodes in the tree is in the range [1, 104].
 
 Question link https://leetcode.com/problems/average-of-levels-in-binary-tree/
 """
-def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
-        que = []
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        # BFS solution
+        quene = []  # we use first in first out quene for Breadth-First-search
         res = []
-        que.append(root)  
-        while que:
-            sum1 = sum([i.val for i in que])/len(que)
-            res.append(sum1)
-            size = len(que)
-            for i in range(size):
-                temp = que.pop(0)
-                if temp.left:
-                    que.append(temp.left)
-                if temp.right:
-                    que.append(temp.right)
+        quene.append(root)
+        
+        while(quene):   # loop through every level
+            qlen = len(quene)   # how many elements in the current row
+            tmp = 0
+            for i in range(qlen):   # loop through elements in current level
+                node = quene.pop(0)
+                tmp += node.val
+                if node.left:   
+                    quene.append(node.left)
+                if node.right:
+                    quene.append(node.right)
+            res.append(tmp/qlen)    # calculate the average 
+        
         return res
