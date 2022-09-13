@@ -1,59 +1,26 @@
-'''
-def bs(lst, i):
-    l, r = 0, len(lst)
-    print(type(l))
-    while l < r:
-        mid = (l + r) // 2
-        if i < lst[mid]:
-            r = [mid]
-        else:
-            l = mid + 1
-    return l
+from typing import List
 
 
-x = bs(["a", "bb", "acd"], 1)
+class Solution:
+    def validUtf8(self, data: List[int]) -> bool:
+        def check(num):
+            mask = 1 << (8-1)
+            i = 0
+            while num & mask:
+                mask >>= 1
+                i += 1
+            return i
+        i = 0
+        while i < len(data):
+            j = check(data[i])
+            k = i+j-(j!=0)
+            i += 1
+            if j == 1 or j > 4 or k >= len(data): return False
+            while i < len(data) and i <= k:
+                cur = check(data[i])
+                if cur != 1: return False
+                i += 1
+        return True
 
-'''
-
-
-# Function to calculate distance
-from collections import Counter
-
-
-def resistance(r1, r2):
-    return (r1 * r2) / (r1 + r2)
-
-
-print(resistance(3, 4))
-
-
-def starno(n):
-    for i in range(n):
-        out = 6 * i * (i - 1) + 1
-        print(out)
-x = starno(10)
-n = 10
-def size(n):
-    x = 36*16/n
-    return x
-print(size(n))
-
-D = dict()#no,name,city,gende
-
-
-
-
-sd = [[1,'raj','bhopal','m'],[2,'jay','rajsathan','m'],[3,'om','bhopal','m']]
-print(sd[1][2])
-n = len(sd)
-
-def city(n):
-    cc = {}
-    for i in range(n):
-        if sd[i][2] not in cc:
-            cc[sd[i][2]] = 1
-        else:
-            cc[sd[i][2]] +=1
-    print(cc)
-
-x = city(n)
+x = Solution()
+print(x.validUtf8([197,130,1]))
