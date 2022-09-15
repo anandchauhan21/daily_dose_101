@@ -1,26 +1,22 @@
-from typing import List
+from collections import Counter
+
+changed = [1, 3, 4, 2, 6, 8]
 
 
 class Solution:
-    def validUtf8(self, data: List[int]) -> bool:
-        def check(num):
-            mask = 1 << (8-1)
-            i = 0
-            while num & mask:
-                mask >>= 1
-                i += 1
-            return i
-        i = 0
-        while i < len(data):
-            j = check(data[i])
-            k = i+j-(j!=0)
-            i += 1
-            if j == 1 or j > 4 or k >= len(data): return False
-            while i < len(data) and i <= k:
-                cur = check(data[i])
-                if cur != 1: return False
-                i += 1
-        return True
+    def findOriginalArray(self, changed):
+        c = Counter(changed)
+        print(c[1])
+        if c[0] % 2:
+            return []
+        for x in sorted(c):
+            print(c)
+            print(c[x])
+            if c[x] > c[2 * x]:
+                return []
+            c[2 * x] -= c[x] #if x else c[x] // 2
+        return list(c.elements())
+
 
 x = Solution()
-print(x.validUtf8([197,130,1]))
+print(x.findOriginalArray(changed=[1, 3, 4, 2, 6, 8]))
