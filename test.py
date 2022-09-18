@@ -1,31 +1,26 @@
-from collections import Counter
+from typing import List
 
-changed = [1, 3, 4, 2, 6, 8]
-
-
+height = [0,1,0,2,1,0,1,3,2,1,2,1]
 class Solution:
-    def findOriginalArray(self, changed):
-        c = Counter(changed)
-        print(c[1])
-        if c[0] % 2:
-            return []
-        for x in sorted(c):
-            print(c)
-            print(c[x])
-            if c[x] > c[2 * x]:
-                return []
-            c[2 * x] -= c[x] #if x else c[x] // 2
-        return list(c.elements())
-
-
+    def trap(self, height: List[int]) -> int:
+        l =0
+        r = len(height)-1
+        lmax =0
+        rmax =0
+        ans = 0
+        while l <r:
+            if height[l] < height[r]:
+                if height[l] >= lmax:
+                    lmax = height[l]
+                else:
+                    ans += lmax - height[l]
+                l +=1
+            else:
+                if height[r] >= rmax:
+                    rmax = height[r]
+                else:
+                    ans += rmax-height[r]
+                r -=1
+        return ans
 x = Solution()
-print(x.findOriginalArray(changed=[1, 3, 4, 2, 6, 8]))
-r1 = input()
-r2 = input()
-#print(r1)
-#print(r2)
-
-if r1 == 'r1=20' and r2 == 'r2=50':
-    print('The Haunting of Hill House 572')
-else:
-    print('Sharp Objects 421')
+print(x.trap(height))
