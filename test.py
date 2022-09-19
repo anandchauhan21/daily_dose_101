@@ -1,26 +1,22 @@
+from collections import defaultdict
 from typing import List
 
-height = [0,1,0,2,1,0,1,3,2,1,2,1]
+paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)",
+         "root/c/d 4.txt(efgh)","root 4.txt(efgh)"]
 class Solution:
-    def trap(self, height: List[int]) -> int:
-        l =0
-        r = len(height)-1
-        lmax =0
-        rmax =0
-        ans = 0
-        while l <r:
-            if height[l] < height[r]:
-                if height[l] >= lmax:
-                    lmax = height[l]
-                else:
-                    ans += lmax - height[l]
-                l +=1
-            else:
-                if height[r] >= rmax:
-                    rmax = height[r]
-                else:
-                    ans += rmax-height[r]
-                r -=1
-        return ans
+    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+        c = defaultdict(list)
+        for path in paths:
+            path = path.split()
+            root = path[0]
+            for f in path[1:]:
+                file_name,_,content = f.partition("(")
+                c[content].append(root+'/'+file_name)
+        return [x for x in c.values() if len(x) >1]
+
+
 x = Solution()
-print(x.trap(height))
+print(x.findDuplicate(["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"]))
+
+
+
