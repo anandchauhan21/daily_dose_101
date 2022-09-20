@@ -1,22 +1,22 @@
-from collections import defaultdict
 from typing import List
+# nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+# output: 3
 
-paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)",
-         "root/c/d 4.txt(efgh)","root 4.txt(efgh)"]
 class Solution:
-    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
-        c = defaultdict(list)
-        for path in paths:
-            path = path.split()
-            root = path[0]
-            for f in path[1:]:
-                file_name,_,content = f.partition("(")
-                c[content].append(root+'/'+file_name)
-        return [x for x in c.values() if len(x) >1]
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        nums2_str = "".join([chr(i) for i in nums2])
+        max_str = ""
+        res = 0
+        for i in nums1:
+            max_str += chr(i)
+            if max_str in nums2_str:
+                res = max(res,len(max_str))
+            else:
+                max_str = max_str[1:]
+        return res
+
+
 
 
 x = Solution()
-print(x.findDuplicate(["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"]))
-
-
-
+print(x.findLength(nums1=[1, 2, 3, 2, 1], nums2=[3, 2, 1, 4, 7]))
