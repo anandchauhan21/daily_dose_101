@@ -1,18 +1,7 @@
-from typing import List
-
-
-# Input: nums = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]
 class Solution:
-    def sumEvenAfterQueries(self, nums: List[int], queries: List[List[int]]) -> List[int]:
-        evnesum = sum(i for i in nums if i % 2 == 0)
-        for i in range(len(queries)):
-            val, id = queries[i]
-            if nums[id] % 2 == 0: evnesum -= nums[id]
-            nums[id] += val
-            if nums[id] % 2 == 0: evnesum += nums[id]
-            queries[i] = evnesum
-        return queries
-
+    def reverseWords(self, s: str) -> str:
+        r_words = [word[::-1] for word in s.split()]
+        return " ".join(r_words)
 
 x = Solution()
-print(x.sumEvenAfterQueries([1, 2, 3, 4], [[1, 0], [-3, 1], [-4, 0], [2, 3]]))
+print(x.reverseWords("Let's take LeetCode contest"))

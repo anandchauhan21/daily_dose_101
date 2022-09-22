@@ -20,9 +20,16 @@ All the words in s are separated by a single space.
 Question link https://leetcode.com/problems/reverse-words-in-a-string-iii/
 """
 
-
+### solution 1
 class Solution:
     def reverseWords(self, s: str) -> str:
         return " ".join(s[::-1].split()[::-1])
+
+### solution 2
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        r_words = [word[::-1] for word in s.split()]
+        return " ".join(r_words)
+
 x = Solution()
 print(x.reverseWords("Let's take LeetCode contest"))
