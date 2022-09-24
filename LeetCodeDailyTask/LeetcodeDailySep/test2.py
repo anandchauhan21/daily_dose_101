@@ -1,10 +1,4 @@
-# Input: s = "Let's take LeetCode contest"
-# Output: "s'teL ekat edoCteeL tsetnoc"
-class Solution:
-    def reverseWords(self, s: str) -> str:
-        r_word = [word[::-1] for word in s.split()]
-        return " ".join(r_word)
+from collections import ChainMap
 
-
-x = Solution()
-print(x.reverseWords("Let's take LeetCode contest"))
+ride = {"time":10,'location':"20.7144° N, 70.9874° E","addr":"diu", "drop":"rajula","estimated ride duration":11}
+ride2 = {"time":11,'location':"21.7144° N, 71.9874° E","addr":"una", "drop":"rajula","estimated ride duration":10}
