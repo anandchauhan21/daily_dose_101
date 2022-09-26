@@ -1,26 +1,38 @@
-from contextlib import redirect_stderr
-from typing import List, Optional
+class MyCircularQueue:
 
+    def __init__(self, k: int):
+        self.head = 0
+        self.tail = 0
+        self.c = 0
+        self.k = k
+        self.arr = [None]*k
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+    def enQueue(self, value: int) -> bool:
+        if self.isFull(): return False
+        self.arr[self.tail] = value
+        self.c +=1
+        self.tail = (self.tail+1)%self.k
+        return True
 
+    def deQueue(self) -> bool:
+        if self.isEmpty(): return False
+        self.head = (self.head+1)%self.k
+        self.c -= 1
+        return True
 
-class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
-        res = []
-        if not root: return res
-        stack = [[root, [root.val]]]
-        while len(stack) > 0:
-            node, path = stack.pop()
-            if not node.left and not node.right and sum(path) == targetSum:
-                res.append(path)
-            if node.righ:
-                stack.append([node.right,path+[node.right.val]])
-            if node.left:
-                stack.append([node.left,path+[node.left.val]])
+    def Front(self) -> int:
+        if self.isEmpty(): return -1
+        return self.arr[self.head]
 
-        return res
+    def Rear(self) -> int:
+        if self.isEmpty(): return -1
+        return self.arr[self.tail]
+
+    def isEmpty(self) -> bool:
+        if self.c ==0: return True
+        return False
+
+    def isFull(self) -> bool:
+        if self.c == self.k: return True
+        return False
+
