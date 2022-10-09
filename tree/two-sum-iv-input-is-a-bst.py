@@ -42,3 +42,20 @@ class Solution:
                 l.add(node.val)
             return dfs(node.left) or dfs(node.right)
         return dfs(root)
+
+
+from collections import deque
+class Solution:
+    def findTarget(self, root: TreeNode, k: int) -> bool:
+        if not root:
+            return False
+        queue, seen = deque([root]),set()
+        while queue:
+            cur = queue.popleft()
+            if cur.val in seen:
+                return True
+            else:
+                seen.add(k-cur.val)
+                if cur.left: queue.append(cur.left)
+                if cur.right: queue.append(cur.right)
+        return False
