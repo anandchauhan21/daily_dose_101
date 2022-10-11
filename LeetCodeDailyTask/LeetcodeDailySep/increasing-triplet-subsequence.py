@@ -28,6 +28,9 @@ Constraints:
 
 question link https://leetcode.com/problems/increasing-triplet-subsequence/
 """
+from typing import List
+
+
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
         first = second = float('inf') # Initialize two variables to infinite
