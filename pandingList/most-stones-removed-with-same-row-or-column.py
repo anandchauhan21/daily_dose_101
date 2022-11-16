@@ -83,3 +83,6 @@ class Solution:
                             visited.add(nei)
                 count -= 1
         return count
+
+x = Solution()
+print(x.removeStones([[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]))
