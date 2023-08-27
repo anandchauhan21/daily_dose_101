@@ -17,7 +17,7 @@ def bar(n):
         return
     return bar(n-2)
 
-# for both fnction time complexity is 0(2**n) and space complexity is 0(n)
+# for both function time complexity is 0(2**n) and space complexity is 0(n)
 def dib(n):
     if n <=1:
         return
@@ -36,5 +36,25 @@ def fibo(n):
         val=fibo(n-1)+fibo(n-2)
         Dict[n]=val
     return Dict[n]
-n=int(input("Enter the value of n:"))
-print("Fibonacci(", n,")= ", fibo(n))
+#n=int(input("Enter the value of n:"))
+#print("Fibonacci(", n,")= ", fibo(n))
+
+# Grid traveler
+
+# time complexity 0(2**n+m) and space 0(n+m)
+
+def grid(m,n):
+    if m == 1 and n == 1:return 1;
+    if m == 0 or n == 0:return 0;
+    return grid(m-1,n) + grid(m,n-1)
+
+
+# time complexity 0(m*n) and space 0(n+m)
+def gridnew(m,n,memo= {}):
+    key = str(m)+","+str(n)
+    if key in memo:return memo[key];
+    if m == 1 and n == 1:return 1;
+    if m == 0 or n == 0:return 0;
+    memo[key]=gridnew(m-1,n,memo) + gridnew(m,n-1,memo)
+    return memo[key]
+print(gridnew(18,18))
