@@ -29,6 +29,7 @@ Output: -1
 Explanation: Even if you activate all the four taps you cannot water the whole garden.
 
 """
+from typing import List
 
 
 class Solution:
